@@ -15,6 +15,13 @@ async function getImage(query) {
     }
 
     catImage.src = data.urls.regular;
+    // Attribute photographer + Unsplash
+    document.getElementById("credit").innerHTML =
+    `Photo by <a href="${data.user.links.html}?utm_source=hello_kayla_app&utm_medium=referral" target="_blank">${data.user.name}</a> on <a href="https://unsplash.com/?utm_source=hello_kayla_app&utm_medium=referral" target="_blank">Unsplash</a>`;
+
+    // Trigger download for Unsplash stats
+    fetch(`${data.links.download_location}&client_id=${UNSPLASH_ACCESS_KEY}`);
+
     catImage.alt = `${query} picture`;
     catImage.style.display = 'block';
   } catch (err) {
